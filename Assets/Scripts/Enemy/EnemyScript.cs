@@ -4,12 +4,13 @@ using static UnityEngine.GraphicsBuffer;
 
 public class EnemyScript : MonoBehaviour
 {
-    public float moveSpeed = 3f;
+    public float moveSpeed = 1f;
     Rigidbody2D rb;
     Transform target;
     Vector2 moveDirection;
 
-    public float health, maxHealth = 3f;
+    public float maxHealth = 1f;
+    private float health;
     
     void Awake()
     {
@@ -47,6 +48,5 @@ public class EnemyScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        Debug.Log("Took Damage. Remaning Health: " + health);
     }
 }

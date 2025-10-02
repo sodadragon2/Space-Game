@@ -11,19 +11,26 @@ public class EnemySpawner : MonoBehaviour
     private float minX, maxX, minY, maxY;
     private float thresholdDistance = 1f;
     private Vector2 playerIdentity;
+    [SerializeField]
+    private float waveLimit = 30;
+    [SerializeField]
+    private float remainingWave;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         SetTimeUntilSpawn();
+        remainingWave = waveLimit;
     }
 
     // Update is called once per frame
     void Update()
     {
         spawnTime -= Time.deltaTime;
-        if (spawnTime <= 0 )
+        if (spawnTime <= 0 && remainingWave > 0)
         {
             SpawnEnemy();
+            remainingWave--;
+            Debug.Log("Remaning enemies: " + remainingWave);
         }
     }
 
